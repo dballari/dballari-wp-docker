@@ -4,6 +4,8 @@ services:
   wp:
     image: wordpress:latest # https://hub.docker.com/_/wordpress/
     restart: unless-stopped
+    #ports:
+    #  - 127.0.0.1:${PORT}:80 # change ip if required. uncomment if no proxy used
     volumes:
       - ./wp-app:/var/www/html # Full wordpress project
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
@@ -50,7 +52,7 @@ services:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: 50M
     #ports:
-    #  - ${DOMAIN}:8080:80
+    #  - ${DOMAIN}:8080:80 # uncomment if no proxy used
     links:
       - db:db
 
