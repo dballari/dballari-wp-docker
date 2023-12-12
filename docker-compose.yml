@@ -53,7 +53,7 @@ services:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: 50M
     #ports:
-    #  - ${DOMAIN}:${PMA_PORT}::80 # uncomment if no proxy used
+    #  - ${DOMAIN}:${PMA_PORT}:80 # uncomment if no proxy used
     links:
       - db:db
 
