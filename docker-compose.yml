@@ -9,6 +9,10 @@ services:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
       #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
       #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    deploy:
+      resources:
+        limits:
+          memory: 64M
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: "${DB_NAME}"
@@ -50,6 +54,10 @@ services:
       PMA_ABSOLUTE_URI: "https://${PMA_DOMAIN}"
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       UPLOAD_LIMIT: 50M
+    deploy:
+      resources:
+        limits:
+          memory: 32M
     links:
       - db:db
 
@@ -69,7 +77,11 @@ services:
       MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
-
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    
 volumes:
   db_data:
 
